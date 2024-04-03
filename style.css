@@ -1,0 +1,59 @@
+body{  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.display{
+    display: flex;
+    border: 1px solid black;
+    height: 60px;
+    justify-content: flex-end;
+    background-color: grey;
+    font-size: 48px;
+}
+button{
+    width: 90px;
+    height: 90px;
+}
+#zero{
+    width: 184px;
+}
+.line-1,
+.line-2,
+.line-3,
+.line-4,
+.line-5{
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.num,
+.decimal{
+    background-color: rgb(71, 71, 211);
+    border-radius: 5px;
+    font-size: 48px;
+
+}
+.operator,
+.equals{
+    background-color: rgb(234, 171, 53);
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 48px;
+}
+.clear,
+.posneg,
+.percent{
+    background-color: rgb(148, 25, 25);
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 48px;
+
+}
+.container{
+    background-color: black;
+    padding: 8px;
+    height: fit-content;
+    width: fit-content;
+}
