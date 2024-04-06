@@ -23,20 +23,19 @@ function calculateResult(firstNumber, secondNumber, currentOperator){
         case '/': return divide(num1, num2);
         default: return 0;
     }
-
 }
 
 let negative = false
-let firstNumber = ''
-let secondNumber = '0'
-let displayValue = '0'
+let firstNumber = '';
+let secondNumber = '0';
+let displayValue = '0';
 let currentOperator = null
 let operatorSelected = false
 let isFirstInput = true
 const display = document.querySelector('.display')
 display.textContent = displayValue
-const btnNum = document.querySelectorAll('.num')
 
+const btnNum = document.querySelectorAll('.num')
 btnNum.forEach(function(btnNum){
     btnNum.addEventListener('click', function(){
         if(operatorSelected){if(secondNumber === "0" && btnNum.textContent !=="0"){
@@ -77,7 +76,6 @@ operatorBtns.forEach(button => {
                 currentOperator = button.textContent
                 secondNumber = '';
                 isFirstInput = true;
-                
             }
         }
         if (!operatorSelected){
@@ -101,8 +99,8 @@ equals.addEventListener('click', function(){
         currentOperator = null;
         isFirstInput = true
     }
-
 })
+
 const clear = document.querySelector('.clear');
 clear.addEventListener('click', function(){
     display.textContent = '0';
@@ -113,6 +111,7 @@ clear.addEventListener('click', function(){
     currentOperator = null;
     isFirstInput = true
 });
+
 const posNeg = document.querySelector('.posneg');
 posNeg.addEventListener('click', function(){
         if (operatorSelected && secondNumber !== ''){
@@ -122,8 +121,8 @@ posNeg.addEventListener('click', function(){
         displayValue = displayValue * -1
         display.textContent = displayValue
         }
-
 })
+
 const percent = document.querySelector('.percent');
 percent.addEventListener('click', function(){
         if (operatorSelected && secondNumber !== ''){
@@ -133,8 +132,8 @@ percent.addEventListener('click', function(){
         displayValue = displayValue * .01
         display.textContent = displayValue
         }
-
 })
+
 const decimal = document.querySelector('.decimal');
 decimal.addEventListener('click', function(){
    if(!operatorSelected && !displayValue.includes('.')){
@@ -145,3 +144,23 @@ decimal.addEventListener('click', function(){
     display.textContent = secondNumber
    }
 })
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === "Backspace") {
+        event.preventDefault(); // Prevent the default backspace action
+
+        if (operatorSelected) {
+            // If we're currently entering the second number, remove the last digit from it
+            if (secondNumber.length > 0) {
+                secondNumber = secondNumber.slice(0, -1);
+                display.textContent = secondNumber || '0'; // Display '0' if secondNumber becomes empty
+            }
+        } else {
+            // If we're not in operator mode, edit the first number / displayValue
+            if (displayValue.length > 0) {
+                displayValue = displayValue.slice(0, -1);
+                display.textContent = displayValue || '0'; // Display '0' if displayValue becomes empty
+            }
+        }
+    }
+});
